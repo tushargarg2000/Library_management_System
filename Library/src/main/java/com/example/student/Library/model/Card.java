@@ -1,10 +1,12 @@
 package com.example.student.Library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +18,10 @@ public class Card {
 
     @OneToOne(mappedBy = "card",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Student student;
+
+    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("card")
+    private List<Book> books;
 
     //Now we don't need to manually insert these things in Card class
     @CreationTimestamp
@@ -69,6 +75,14 @@ public class Card {
 
     public void setCardStatus(CardStatus cardStatus) {
         this.cardStatus = cardStatus;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override

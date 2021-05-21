@@ -1,4 +1,7 @@
 package com.example.student.Library.model;
 
-public class TransactionStatus {
+public enum TransactionStatus {
+    SUCCESSFUL,
+    FAILED,
+    PENDING
 }
