@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 @RestController
 public class StudentController {
 
-    //private static final int NULL = 1234;
-
     @Autowired
     StudentService studentService;
 
@@ -24,6 +22,8 @@ public class StudentController {
     @PostMapping("/createStudent")
     public ResponseEntity createStudent(@RequestBody Student student)
     {
+        System.out.println("Inside the create student portal ");
+
         studentService.createStudent(student);
         return new ResponseEntity<>("the Student is successfully added to the system",HttpStatus.CREATED);
     }
@@ -41,12 +41,6 @@ public class StudentController {
             cardService.deactivateCard(id);
             studentService.deleteStudent(id);
             return null;
-    }
-
-    @GetMapping("/getStudent")
-    public Student getStudent()
-    {
-
     }
 
 
