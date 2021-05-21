@@ -4,6 +4,7 @@ import com.example.student.Library.Repository.CardRepository;
 import com.example.student.Library.Repository.StudentRepository;
 import com.example.student.Library.model.Card;
 import com.example.student.Library.model.Student;
+import com.sun.xml.bind.v2.runtime.output.SAXOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,5 +36,8 @@ public class LibraryApplication implements CommandLineRunner {
 		student.setCard(card);
 
 		cardRepository.save(card);
+
+		cardRepository.findAll().stream().forEach(System.out::println);
+
 	}
 }

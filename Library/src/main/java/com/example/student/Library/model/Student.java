@@ -18,7 +18,7 @@ public class Student {
     private String email;
     private String name;
     private int age;//In case we later need to add extra parameters
-    private String Country;
+    private String country;
 
     //alter Table student add foreign key constraint card reference Card(id)
 
@@ -41,7 +41,7 @@ public class Student {
         this.email = email;
         this.name = name;
         this.age = age;
-        Country = country;
+        this.country = country;
     }
 
     public Date getCreatedOn() {
@@ -98,5 +98,18 @@ public class Student {
 
     public void setCard(Card card) {
         this.card = card;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
     }
 }
