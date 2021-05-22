@@ -1,5 +1,6 @@
 package com.example.student.Library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,6 +25,7 @@ public class Student {
 
     @OneToOne
     @JoinColumn      //This joins to the primary key of the Card table
+    @JsonIgnoreProperties("student")
     private Card card;
 
     @CreationTimestamp

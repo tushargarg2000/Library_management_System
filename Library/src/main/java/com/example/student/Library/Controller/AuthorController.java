@@ -6,9 +6,9 @@ import com.example.student.Library.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class AuthorController {
@@ -23,6 +23,14 @@ public class AuthorController {
 
         authorService.createAuthor(author);
         return new ResponseEntity<>("the Author is successfully added to the system", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getAuthor")
+    public ResponseEntity getAuthor(@RequestParam(value = "id")Integer id)
+    {
+        Optional<Author> author = authorService.getAuthor(id);
+
+        return new ResponseEntity<>(author,HttpStatus.ACCEPTED);
     }
 
 

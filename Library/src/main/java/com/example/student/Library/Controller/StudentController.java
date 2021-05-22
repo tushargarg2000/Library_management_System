@@ -1,5 +1,6 @@
 package com.example.student.Library.Controller;
 
+import com.example.student.Library.Repository.StudentRepository;
 import com.example.student.Library.Service.CardService;
 import com.example.student.Library.Service.StudentService;
 import com.example.student.Library.model.Student;
@@ -9,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.GeneratedValue;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class StudentController {
@@ -18,6 +21,9 @@ public class StudentController {
 
     @Autowired
     CardService cardService;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @PostMapping("/createStudent")
     public ResponseEntity createStudent(@RequestBody Student student)
@@ -42,6 +48,14 @@ public class StudentController {
             studentService.deleteStudent(id);
             return null;
     }
+
+    @GetMapping("/getStudent")
+    public ResponseEntity getStudent(@RequestParam("id") Integer id){
+
+        List<Student> studentList  = studentRepository.findAllById(Collections.singleton(id));
+        return new ResponseEntity<>(studentList,HttpStatus.OK);
+    }
+
 
 
 }

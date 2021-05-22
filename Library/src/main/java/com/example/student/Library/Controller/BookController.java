@@ -34,7 +34,6 @@ public class BookController {
         return new ResponseEntity<>("the book is added successfully", HttpStatus.CREATED);
     }
 
-
     @GetMapping("/getBooks")
     public ResponseEntity getBooks(@RequestParam(value = "genre", required = false) String genre,
                                    @RequestParam(value = "available", required = false, defaultValue = "false") boolean available,
