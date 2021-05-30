@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TransactionController {
 
-
     @Autowired
     TransactionService transactionService;
 
@@ -26,6 +25,4 @@ public class TransactionController {
         String externalTransactionId = transactionService.returnBook(cardId, bookId);
         return new ResponseEntity<>("transaction completed, here is your transactionId - " + externalTransactionId, HttpStatus.ACCEPTED);
     }
-
-
 }

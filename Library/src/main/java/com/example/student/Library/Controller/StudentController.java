@@ -56,6 +56,4 @@ public class StudentController {
         return new ResponseEntity<>(studentList,HttpStatus.OK);
     }
 
-
-
 }

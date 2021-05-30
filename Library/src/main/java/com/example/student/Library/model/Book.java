@@ -25,7 +25,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties("books")
+    @JsonIgnoreProperties("book")
     private Card card;
 
 
